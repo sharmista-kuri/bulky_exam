@@ -92,7 +92,7 @@ Route::get('/rss-automation/', 'RssAutomationController@index')->name('rss-autom
 Route::get('/rss-automation/pending/{id}', 'RssAutomationController@pendingGroup')->name('rss-automation-pending');
 Route::get('/rss-automation/active/{id}', 'RssAutomationController@activeGroup')->name('rss-automation-active');
 Route::get('/rss-automation/completed/{id}', 'RssAutomationController@completedGroup')->name('rss-automation-completed');
-
+Route::get('/new_page/', 'NewPageController@index')->name('new_page');
 Route::get('/analytics/', 'PagesController@analytics')->name('analytics');
 Route::get('/calendar/', 'PagesController@calendar')->name('calendar');
 Route::get('/support/', 'PagesController@support')->name('support');

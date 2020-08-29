@@ -52,7 +52,7 @@ class LoginController extends Controller
             if (Auth::attempt($credentials, $remember)) {
                 return redirect()->route('home');
             } else {
-                return redirect()->back()->withErrors(['email' => ['Invalid credentials']]);
+                return redirect()->back()->withErrors(['email' => ['Invalid credentialss']]);
             }
 
         } catch (\Exception $e){

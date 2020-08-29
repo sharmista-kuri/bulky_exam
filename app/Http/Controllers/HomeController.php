@@ -95,35 +95,7 @@ class HomeController extends Controller
         }
 
 
-        /*if(!Auth::check()){
-            // get campaign Cookie
-                $campaign_cookie = \Cookie::get('campaign');
-                $campaign_email = \Cookie::get('campaign_email');
-                if($campaign_cookie && $campaign_email){
-                    $campaign_user = User::where('email', $campaign_email)->first();
-                    if(!$campaign_user){
         
-                        $user_meta = array(
-                            'temp_user' => true,
-                            'temp_subs' => false,
-                        );
-        
-                        $campaign_user = new User;
-                        $campaign_user->name = ' ';
-                        $campaign_user->first_name = ' ';
-                        $campaign_user->last_name = ' ';
-                        $campaign_user->email = $campaign_email;
-                        $campaign_user->password = bcrypt($campaign_email);
-                        $campaign_user->varifide = 1;
-                        $campaign_user->user_meta = serialize($user_meta);
-                        $campaign_user->save();
-                        // delete campaign Cookie 
-                        \Auth::login($campaign_user);
-                    } else {
-                        \Auth::login($campaign_user);
-                    }
-                }
-        }*/
 
 
         $user = null;
@@ -131,16 +103,7 @@ class HomeController extends Controller
             // get auth user
             $user = User::find(Auth::id());
             $user_meta = unserialize($user->user_meta);
-            /*if ($user_meta['temp_subs'] === true) {
-
-            } else {
-
-            }*/
-
-
-//        if($user->id == 2874){
-            //dd(date_default_timezone_get());
-//        }
+            
 
             if ($user->buffer_id == null || (isset($request->code) && $request->code != null)) {
                 if (isset($request->code)) {
@@ -355,7 +318,7 @@ class HomeController extends Controller
                 $SocialPostGroupsNew = \Bulkly\SocialPostGroups::where('user_id', \Auth::id())->first();
                 if ($SocialPostGroupsNew) {
                     //dd(\Auth::user());
-//                    return redirect(route('content-pending', $SocialPostGroupsNew->id));
+
                     return redirect(route('start'));
                 } else {
                     dump('No Post Found');
@@ -370,9 +333,7 @@ class HomeController extends Controller
             return redirect(route('login'));
         }
 
-        /*if ($request->code) {
-            return redirect(route('home'));
-        }*/
+        
 
         $months = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
         $frequency = array();
