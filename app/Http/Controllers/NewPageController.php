@@ -12,7 +12,7 @@ class NewPageController extends Controller
     public function index(){
 
         $BufferPosting = DB::table('buffer_postings')
-        ->select(DB::raw('social_post_groups.* , social_post_groups.name as group_name, social_post_groups.type as group_type,social_accounts.name as account_name '))
+        ->select(DB::raw('buffer_postings.*, social_post_groups.name as group_name, social_post_groups.type as group_type,social_accounts.name as account_name'))
         
         ->join('social_post_groups', 'social_post_groups.id', '=', 'buffer_postings.group_id')
         ->join('social_accounts', 'social_accounts.id', '=', 'buffer_postings.account_id')
@@ -24,6 +24,5 @@ class NewPageController extends Controller
         );
         return view('pages/new_page', $data);
 
-        //return view('flight.index', ['flights' => $flights]);
     }
 }

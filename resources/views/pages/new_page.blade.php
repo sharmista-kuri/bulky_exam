@@ -16,7 +16,9 @@
         <td>{{$buffer->group_type}}</td>
         <td>{{$buffer->account_name}}</td>
         <td>{{$buffer->post_text}}</td>
-        <td>{{$buffer->account_name}}</td>
+        <td><?=date('d M Y h:i a', strtotime($buffer->sent_at))?></td>
+        
+        
         
     </tr>
     @endforeach
